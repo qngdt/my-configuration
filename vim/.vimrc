@@ -81,11 +81,6 @@ Plugin 'joshdick/onedark.vim'
 " required for vundle
 call vundle#end()
 
-syntax on
-colorscheme onedark
-filetype plugin indent on   " enable detection, plugins and indent
-
-
 
 " Local dirs (centralize everything)
 set backupdir=~/.vim/backups
@@ -168,6 +163,11 @@ endif
 " -----------------------------------------------------------------------------
 
 set t_Co=256                " 256 colors terminal
+
+syntax on
+colorscheme onedark
+filetype plugin indent on   " enable detection, plugins and indent
+
 
 " make 'var' keyword easier to spot
 hi link javascriptType Keyword
