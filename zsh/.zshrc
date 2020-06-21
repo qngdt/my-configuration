@@ -109,3 +109,7 @@ export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 export PATH="/usr/local/opt/php@7.2/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
