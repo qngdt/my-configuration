@@ -3,6 +3,9 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+Plug 'stephpy/vim-yaml'
+Plug 'valloric/youcompleteme'
+Plug 'jamshedvesuna/vim-markdown-preview'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-scripts/IndentAnything'
 Plug 'vim-scripts/IndexedSearch'
@@ -74,3 +77,26 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+" Move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
+" Set clipboard to systems'
+set clipboard=unnamedplus
+" Enable Highlight Search
+set hlsearch
+" Highlight while search
+set incsearch
+" Case Insensitivity Pattern Matching
+set ignorecase
+" Overrides ignorecase if pattern contains upcase
+set smartcase
+" Keep search results at the center of screen
+:set tabstop=2
+:set shiftwidth=2
+:set expandtab

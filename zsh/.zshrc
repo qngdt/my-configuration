@@ -69,7 +69,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vscode zsh-autosuggestions z zsh-completions zsh-syntax-highlighting)
+plugins=(git vscode zsh-autosuggestions fast-syntax-highlighting z zsh-completions zsh-syntax-highlighting kubectl vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,3 +113,11 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+fpath=($fpath ~/.zsh/completion)
+alias terraform="tf"
