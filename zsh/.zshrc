@@ -117,7 +117,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+alias tf='terraform'
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
 fpath=($fpath ~/.zsh/completion)
-alias terraform="tf"
+complete -o nospace -C /usr/local/bin/terraform terraform
