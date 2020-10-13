@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 source /Users/Homuru/.bash_profile
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -10,7 +17,6 @@ export ZSH="/Users/homuru/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -72,7 +78,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git vscode zsh-autosuggestions fast-syntax-highlighting z zsh-completions zsh-syntax-highlighting kubectl vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -118,6 +123,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 alias tf='terraform'
+alias k='kubectl'
 autoload -U +X bashcompinit && bashcompinit
 fpath=($fpath ~/.zsh/completion)
 complete -o nospace -C /usr/local/bin/terraform terraform

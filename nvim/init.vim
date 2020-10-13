@@ -3,11 +3,14 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-Plug 'stephpy/vim-yaml'
-Plug 'valloric/youcompleteme'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'stephpy/vim-yaml' 
 Plug 'jamshedvesuna/vim-markdown-preview'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-scripts/IndentAnything'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/IndexedSearch'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'mileszs/ack.vim'
@@ -33,6 +36,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'mhinz/vim-signify'
 Plug 'int3/vim-extradite'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " css
 Plug 'ap/vim-css-color'
@@ -60,10 +64,26 @@ Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
-
+if (has("autocmd"))
+  augroup colorextend
+    autocmd!
+    " Make `Function`s bold in GUI mode
+    autocmd ColorScheme * call onedark#extend_highlight("Function", { "gui": "bold" })
+    " Override the `Statement` foreground color in 256-color mode
+    autocmd ColorScheme * call onedark#extend_highlight("Statement", { "fg": { "cterm": 128 } })
+    " Override the `Identifier` background color in GUI mode
+    autocmd ColorScheme * call onedark#extend_highlight("Identifier", { "bg": { "gui": "#333333" } })
+  augroup END
+endif
 set termguicolors
 syntax on
 colorscheme onedark
+set number
+highlight Normal ctermbg=None
+highlight LineNr ctermfg=DarkGrey
+
+let mapleader=" "
+nnoremap <Space> <Nop>
 
 if (empty($TMUX))
   if (has("nvim"))
@@ -78,9 +98,14 @@ if (empty($TMUX))
   endif
 endif
 
-" Move to beginning/end of line
 nnoremap B ^
 nnoremap E $
+nnoremap J 5j
+nnoremap K 5k
+nnoremap <Leader>j J
+nnoremap <Leader>/ :noh<CR>
+nnoremap d "_d
+nnoremap <SPACE> <Nop>
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
@@ -100,3 +125,10 @@ set smartcase
 :set tabstop=2
 :set shiftwidth=2
 :set expandtab
+set relativenumber
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:airline_powerline_fonts = 1
