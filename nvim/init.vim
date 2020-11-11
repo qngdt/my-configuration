@@ -104,7 +104,6 @@ nnoremap J 5j
 nnoremap K 5k
 nnoremap <Leader>j J
 nnoremap <Leader>/ :noh<CR>
-nnoremap d "_d
 nnoremap <SPACE> <Nop>
 noremap <Leader>y "*y
 noremap <Leader>p "*p

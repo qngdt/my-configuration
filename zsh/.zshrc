@@ -124,6 +124,7 @@ fi
 
 alias tf='terraform'
 alias k='kubectl'
+alias c='code .'
 autoload -U +X bashcompinit && bashcompinit
 fpath=($fpath ~/.zsh/completion)
 complete -o nospace -C /usr/local/bin/terraform terraform
