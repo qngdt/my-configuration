@@ -5,60 +5,13 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'stephpy/vim-yaml' 
-Plug 'jamshedvesuna/vim-markdown-preview'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-scripts/IndentAnything'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'vim-scripts/IndexedSearch'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'mileszs/ack.vim'
-Plug 'vim-scripts/bufkill.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'sjl/gundo.vim'
-Plug 'sjl/clam.vim'
-Plug 'othree/html5.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdtree'
-Plug 'junkblocker/patchreview-vim'
-Plug 'ervandew/supertab'
-Plug 'scrooloose/syntastic'
-Plug 'godlygeek/tabular'
+Plug 'airblade/vim-gitgutter'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'mhinz/vim-signify'
-Plug 'int3/vim-extradite'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" css
-Plug 'ap/vim-css-color'
-Plug 'hail2u/vim-css3-syntax'
-
-" js
-Plug 'pangloss/vim-javascript'
-Plug 'elzr/vim-json'
-Plug 'mxw/vim-jsx'
-Plug 'millermedeiros/vim-esformatter'
-Plug 'leafgarland/typescript-vim'
-Plug 'prettier/vim-prettier'
-
-" snipmate
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-
-Plug 'millermedeiros/vim-statline'
-" Plug 'bling/vim-airline'
-
+Plug 'ctrlpvim/ctrlp.vim'
 " colorschemes
 Plug 'joshdick/onedark.vim'
 
@@ -110,6 +63,8 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
+inoremap jk <Esc>
+
 " Set clipboard to systems'
 set clipboard=unnamedplus
 " Enable Highlight Search
@@ -131,3 +86,4 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let g:airline_powerline_fonts = 1
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|dist\|git'

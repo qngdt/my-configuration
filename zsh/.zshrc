@@ -83,7 +83,9 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8" 
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -112,8 +114,11 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 export PATH="/usr/local/opt/php@7.2/bin:$PATH"
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOBIN
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
@@ -128,3 +133,8 @@ alias c='code .'
 autoload -U +X bashcompinit && bashcompinit
 fpath=($fpath ~/.zsh/completion)
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+eval $(thefuck --alias)
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
